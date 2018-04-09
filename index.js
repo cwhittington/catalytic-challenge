@@ -41,13 +41,13 @@ function sendEmail (options, callback) {
 function respondToEmail (email, callback) {
     if(!email.hasOwnProperty('text') || !email.text) {
         console.error('No body found, responding with unknonwn');
-        sendUnknownRequestEmail(callback);
+        sendUnRecognizedRequestEmail(callback);
         return;
     }
 
     if(!email.text.includes('cancel')) {
         console.error('Unable to process email, as it does not contain cancel verbiage');
-        sendUnknownRequestEmail(callback);
+        sendUnRecognizedRequestEmail(callback);
         return;
     }
 
@@ -56,7 +56,7 @@ function respondToEmail (email, callback) {
     }, callback);
 }
 
-function sendUnknownRequestEmail(callback) {
+function sendUnRecognizedRequestEmail(callback) {
     sendEmail({
         html: unknownTemplate(),
         subject: 'Unrecognized Request'
