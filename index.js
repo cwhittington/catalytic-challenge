@@ -1,6 +1,7 @@
 'use strict';
 
 const nodemailer = require('nodemailer');
+const htmlToText = require('html-to-text');
 
 const localTransport = nodemailer.createTransport({
     host: '127.0.0.1',
@@ -16,6 +17,12 @@ function sendEmail (options, callback) {
 
     // TODO Step 2: Generate plaintext alternative from HTML
     // This should take no more than a few lines
+    if(options.html) {        
+        email.text = htmlToText.fromString(options.html);
+    }
+    else {        
+        return callback(new Error('Body is empty'));
+    }
 
     return localTransport.sendMail(email, (err, info) => {
         if (err) {

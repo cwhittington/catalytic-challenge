@@ -28,7 +28,7 @@ describe('canceled', () => {
     });
 
     // TODO: when step 2 is complete this test should pass
-    it.skip('should generate text alternative', done => {
+    it('should generate text alternative', done => {
         sendCancelEmail((err, result) => {
             if (err) {
                 return done(err);

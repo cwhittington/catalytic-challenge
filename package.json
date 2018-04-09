@@ -13,6 +13,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "async": "^2.0.1",
+    "html-to-text": "^4.0.0",
     "nodemailer": "^2.5.0",
     "verror": "^1.9.0"
   },
