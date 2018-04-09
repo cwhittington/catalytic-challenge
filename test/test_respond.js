@@ -31,8 +31,8 @@ describe('#respondToEmail', () => {
             }
 
             const html = response.email.html.replace(/\n/g, ' ');
-            expect(html).to.include('Unknown request, please retry.');
-
+            expect(html).to.include('Unrecognized request, please retry.');
+            expect(response.email.subject).to.equal('Unrecognized Request');
             done();
         });
     });
@@ -47,7 +47,8 @@ describe('#respondToEmail', () => {
             }
 
             const html = response.email.html.replace(/\n/g, ' ');
-            expect(html).to.include('Unknown request, please retry.');
+            expect(html).to.include('Unrecognized request, please retry.');
+            expect(response.email.subject).to.equal('Unrecognized Request');
 
             done();
         });

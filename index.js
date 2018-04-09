@@ -3,7 +3,7 @@
 const nodemailer = require('nodemailer');
 const htmlToText = require('html-to-text');
 const cancelTemplate = require('./assets/templates/canceled');
-const unknownTemplate = require('./assets/templates/unknown');
+const unknownTemplate = require('./assets/templates/unrecognized');
 
 const localTransport = nodemailer.createTransport({
     host: '127.0.0.1',
@@ -59,7 +59,7 @@ function respondToEmail (email, callback) {
 function sendUnknownRequestEmail(callback) {
     sendEmail({
         html: unknownTemplate(),
-        subject: 'Unknown Request'
+        subject: 'Unrecognized Request'
     }, callback);
 }
 
