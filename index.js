@@ -41,22 +41,25 @@ function sendEmail (options, callback) {
 function respondToEmail (email, callback) {
     if(!email.hasOwnProperty('text') || !email.text) {
         console.error('No body found, responding with unknonwn');
-        sendEmail({
-            html: unknownTemplate()
-        }, callback);
+        sendUnknownRequestEmail(callback);
         return;
     }
 
     if(!email.text.includes('cancel')) {
         console.error('Unable to process email, as it does not contain cancel verbiage');
-        sendEmail({
-            html: unknownTemplate()
-        }, callback);
+        sendUnknownRequestEmail(callback);
         return;
     }
 
     sendEmail({
         html: cancelTemplate()
+    }, callback);
+}
+
+function sendUnknownRequestEmail(callback) {
+    sendEmail({
+        html: unknownTemplate(),
+        subject: 'Unknown Request'
     }, callback);
 }
 
