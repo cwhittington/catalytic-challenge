@@ -5,7 +5,7 @@ const respondToEmail = require('..').respondToEmail;
 const chai = require('chai');
 const expect = chai.expect;
 
-describe.skip('#respondToEmail', () => {
+describe('#respondToEmail', () => {
     it('should respond to `cancel` with canceled email', done => {
         respondToEmail({
             from: 'test@localhost',
@@ -14,7 +14,7 @@ describe.skip('#respondToEmail', () => {
             if (err) {
                 return done(err);
             }
-
+//            console.log('Email: ' + JSON.stringify(response));
             const html = response.email.html.replace(/\n/g, ' ');
             expect(html).to.include('Your task was canceled! Bummer.');
 

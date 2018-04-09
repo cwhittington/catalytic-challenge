@@ -2,6 +2,7 @@
 
 const nodemailer = require('nodemailer');
 const htmlToText = require('html-to-text');
+const cancelTemplate = require('./assets/templates/canceled');
 
 const localTransport = nodemailer.createTransport({
     host: '127.0.0.1',
@@ -37,7 +38,19 @@ function sendEmail (options, callback) {
 }
 
 function respondToEmail (email, callback) {
-    // TODO: implement as part of Step 5
+    console.log(JSON.stringify(email));
+    
+    if(!email.hasOwnProperty('text') || !email.text) {
+        callback(new Error('No body provided, unable to initiate response'));
+    }
+
+    if(!email.text.includes('cancel')) {
+        callback(new Error('Unable to process email, as it does not contain cancel verbiage'));
+    }
+
+    sendEmail({
+        html: cancelTemplate()
+    }, callback);
 }
 
 module.exports = {
