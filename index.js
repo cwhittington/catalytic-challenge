@@ -17,8 +17,8 @@ function sendEmail (options, callback) {
 
     // TODO Step 2: Generate plaintext alternative from HTML
     // This should take no more than a few lines
-    if(options.html) {        
-        email.text = htmlToText.fromString(options.html);
+    if(email.hasOwnProperty('html') && email.html) {        
+        email.text = htmlToText.fromString(email.html);
     }
     else {        
         return callback(new Error('Body is empty'));

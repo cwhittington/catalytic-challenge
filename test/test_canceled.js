@@ -43,4 +43,11 @@ describe('canceled', () => {
             done();
         });
     });
+
+    it('should return error if html does not exist or is empty', done => {
+        sendEmail(null, (err, result) => {
+            expect(err).to.exist;
+            done();
+        });
+    });
 });
