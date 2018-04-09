@@ -14,7 +14,7 @@ describe('#respondToEmail', () => {
             if (err) {
                 return done(err);
             }
-//            console.log('Email: ' + JSON.stringify(response));
+
             const html = response.email.html.replace(/\n/g, ' ');
             expect(html).to.include('Your task was canceled! Bummer.');
 

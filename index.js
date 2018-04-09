@@ -38,8 +38,6 @@ function sendEmail (options, callback) {
 }
 
 function respondToEmail (email, callback) {
-    console.log(JSON.stringify(email));
-    
     if(!email.hasOwnProperty('text') || !email.text) {
         callback(new Error('No body provided, unable to initiate response'));
     }
