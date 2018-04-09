@@ -1,0 +1,32 @@
+doctype html
+
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+
+    title Pushbot
+
+    style
+      include ../assets/email.css
+
+  body(class="body")
+    center(class="body")
+
+      <!--[if mso]><table cellspacing="0" cellpadding="0" border="0" class="center-content-mso" align="center"><tr><td><![endif]-->
+
+      div(class="center-content")
+        table(cellspacing="0" cellpadding="0" border="0" align="center" class="container-outer" role="presentation")
+          //- vertical padding
+          tr
+            td(style="padding: 20px 0;")
+
+          tr
+            td(class="container-inner")
+              table(cellspacing="0" cellpadding="0" border="0" width="100%")
+                tr
+                  td(class="content")
+                    | Your task was canceled! Bummer.
+
+      <!--[if mso]></td></tr></table><![endif]-->

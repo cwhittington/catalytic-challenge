@@ -1,0 +1,28 @@
+{
+  "name": "convo-ui-test",
+  "version": "0.0.0",
+  "description": "Pushbot Convo UI interview test",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf assets",
+    "build": "./build.js",
+    "server": "maildev --ip 127.0.0.1",
+    "test": "npm run build && mocha"
+  },
+  "author": "Gabe Gorelick",
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "async": "^2.0.1",
+    "nodemailer": "^2.5.0",
+    "verror": "^1.9.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "glob": "^7.1.1",
+    "maildev": "^0.14.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.0.2",
+    "node-sass": "^3.12.2",
+    "pug": "^2.0.0-beta5"
+  }
+}
