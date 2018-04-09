@@ -94,6 +94,7 @@ function compileTemplates (callback) {
                 file: function (callback) {
                     // TODO Step 1: read the file located at `filename` from the filesystem
                     // This can be done in one line of code, but feel free to write more if you feel it's necessary
+                    fs.readFile(filename, callback);
                 },
 
                 template: ['file', function (results, callback) {
@@ -101,6 +102,7 @@ function compileTemplates (callback) {
 
                     // TODO Step 1: call compileTemplate to generate Javascript
                     // This can be done in one line of code, but feel free to write more if you feel it's necessary
+                    compileTemplate(file, filename, callback);                    
                 }],
 
                 writeFile: ['template', 'mkdir', function (results, callback) {
