@@ -3,6 +3,7 @@
 const nodemailer = require('nodemailer');
 const htmlToText = require('html-to-text');
 const cancelTemplate = require('./assets/templates/canceled');
+const unknownTemplate = require('./assets/templates/unknown');
 
 const localTransport = nodemailer.createTransport({
     host: '127.0.0.1',
@@ -39,11 +40,19 @@ function sendEmail (options, callback) {
 
 function respondToEmail (email, callback) {
     if(!email.hasOwnProperty('text') || !email.text) {
-        callback(new Error('No body provided, unable to initiate response'));
+        console.error('No body found, responding with unknonwn');
+        sendEmail({
+            html: unknownTemplate()
+        }, callback);
+        return;
     }
 
     if(!email.text.includes('cancel')) {
-        callback(new Error('Unable to process email, as it does not contain cancel verbiage'));
+        console.error('Unable to process email, as it does not contain cancel verbiage');
+        sendEmail({
+            html: unknownTemplate()
+        }, callback);
+        return;
     }
 
     sendEmail({

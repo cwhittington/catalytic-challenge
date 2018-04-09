@@ -21,4 +21,35 @@ describe('#respondToEmail', () => {
             done();
         });
     });
+
+    it('should repspond with unknown email if text not provided', done => {
+        respondToEmail({
+            from: 'test@localhost',
+        }, function (err, response) {
+            if (err) {
+                return done(err);
+            }
+
+            const html = response.email.html.replace(/\n/g, ' ');
+            expect(html).to.include('Unknown request, please retry.');
+
+            done();
+        });
+    });
+
+    it('should repspond with unknown email if text provided is not understood', done => {
+        respondToEmail({
+            from: 'test@localhost',
+            text: 'Careful man, there\'s a beverage'
+        }, function (err, response) {
+            if (err) {
+                return done(err);
+            }
+
+            const html = response.email.html.replace(/\n/g, ' ');
+            expect(html).to.include('Unknown request, please retry.');
+
+            done();
+        });
+    });
 });
