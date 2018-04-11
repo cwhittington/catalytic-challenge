@@ -6,8 +6,6 @@ const cancelTemplate = require('../assets/templates/canceled');
 const chai = require('chai');
 const expect = chai.expect;
 
-process.env.ENVIRONMENT = 'dev';
-
 describe('#respondToEmail', () => {
     it('should respond to `cancel` with canceled email', done => {
         respondToEmail({
