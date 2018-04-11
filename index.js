@@ -2,7 +2,6 @@
 
 const nodemailer = require('nodemailer');
 const htmlToText = require('html-to-text');
-const cancelTemplate = require('./assets/templates/canceled');
 const unknownTemplate = require('./assets/templates/unrecognized');
 
 const localTransport = nodemailer.createTransport({
@@ -57,7 +56,7 @@ function respondToEmail (email, template, callback) {
     sendEmail({
         to: email.from,
         from: email.to,
-        html: cancelTemplate(),
+        html: template,
         subject: 'Task Canceled'
     }, callback);
 }
