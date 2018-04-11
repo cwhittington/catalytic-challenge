@@ -27,7 +27,7 @@ After all, leveraging existing solutions is a big part of building software.
 
 When complete, the skipped test in `test/test_canceled.js` should succeed.
 
-### 4. Improve the email
+### 3. Improve the email
 
 We have a simple email (`canceled.pug`) that's sent to users when a task is canceled. Try to improve this
 email: make it pretty, add more content, or whatever you feel is warranted.
@@ -38,14 +38,14 @@ creative.
 **Reminder**: run `npm run build` after modifying the email template to compile your new version.
 If you have your local SMTP server running, you can see your emails at http://127.0.0.1:1080.
 
-### 5. Make it conversational
+### 4. Make it conversational
 
 So far, the existing code isn't very "conversational." It sends emails out, but it doesn't respond to emails.
 Implement the `respondToEmail` function in `index.js` to do just that.
 
 When complete, the tests in `test/test_respond.js` should succeed.
 
-### 6. (optional) Improve the code
+### 5. (optional) Improve the code
 
 We try to foster an engineering culture where anyone can suggest improvements to any part of the code.
 Along those lines, if you have any ways to make this project better, feel free to implement them.

@@ -9,6 +9,8 @@ const expect = chai.expect;
 describe('canceled', () => {
     function sendCancelEmail (callback) {
         return sendEmail({
+            to: 'test_user@localhost',
+            from: 'test@localhost',
             html: cancelTemplate(),
             subject: 'Task Canceled'
         }, callback);

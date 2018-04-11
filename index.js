@@ -11,15 +11,10 @@ const localTransport = nodemailer.createTransport({
     ignoreTLS: true
 });
 
-function sendEmail (options, callback) {
-    const email = Object.assign({
-        from: 'test@localhost',
-        to: 'test@localhost',
-    }, options);
-
+function sendEmail (email, callback) {
     // TODO Step 2: Generate plaintext alternative from HTML
     // This should take no more than a few lines
-    if(email.hasOwnProperty('html') && email.html) {        
+    if(email && email.hasOwnProperty('html') && email.html) {        
         email.text = htmlToText.fromString(email.html);
     }
     else {        
@@ -38,26 +33,39 @@ function sendEmail (options, callback) {
     });
 }
 
-function respondToEmail (email, callback) {
+function respondToEmail (email, template, callback) {
     if(!email.hasOwnProperty('text') || !email.text) {
         console.error('No body found, responding with unknonwn');
-        sendUnRecognizedRequestEmail(callback);
+        sendUnrecognizedRequestEmail(
+            { 
+                to: email.from,
+                from: email.to 
+            }, callback);
         return;
     }
 
-    if(!email.text.includes('cancel')) {
+    if(!email.text.includes('Hey Pushbot, can you cancel my task? Thanks')) {
         console.error('Unable to process email, as it does not contain cancel verbiage');
-        sendUnRecognizedRequestEmail(callback);
+        sendUnrecognizedRequestEmail(
+            { 
+                to: email.from,
+                from: email.to
+            }, callback);
         return;
     }
 
     sendEmail({
-        html: cancelTemplate()
+        to: email.from,
+        from: email.to,
+        html: cancelTemplate(),
+        subject: 'Task Canceled'
     }, callback);
 }
 
-function sendUnRecognizedRequestEmail(callback) {
+function sendUnrecognizedRequestEmail(options, callback) {
     sendEmail({
+        to: options.to,
+        from: options.from,
         html: unknownTemplate(),
         subject: 'Unrecognized Request'
     }, callback);
