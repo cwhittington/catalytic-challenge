@@ -3,11 +3,12 @@
 const nodemailer = require('nodemailer');
 const htmlToText = require('html-to-text');
 const unknownTemplate = require('./assets/templates/unrecognized');
+const config = require('config');
 
 const localTransport = nodemailer.createTransport({
-    host: '127.0.0.1',
-    port: 1025,
-    ignoreTLS: true
+    host: config.get('host'),
+    port: config.get('port'),
+    ignoreTLS: config.get('ignoreTLS')
 });
 
 function sendEmail (email, callback) {

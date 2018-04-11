@@ -6,6 +6,8 @@ const cancelTemplate = require('../assets/templates/canceled');
 const chai = require('chai');
 const expect = chai.expect;
 
+process.env.ENVIRONMENT = 'dev';
+
 describe('canceled', () => {
     function sendCancelEmail (callback) {
         return sendEmail({
