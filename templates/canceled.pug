@@ -17,23 +17,18 @@ html(lang="en")
       <!--[if mso]><table cellspacing="0" cellpadding="0" border="0" class="center-content-mso" align="center"><tr><td><![endif]-->
 
       div(class="center-content")
-        div(class="side-nav")
-          | I am side-nav!
-        div(class="header")
-          | I am a header, I should span the entier length of the grid
-        div(class="content")                                      
-          | Your task was canceled! Bummer.
-        div(class="footer")
-          | &copy;2018 I am a footer.  I should span across all columns.
-        table(cellspacing="0" cellpadding="0" border="0" align="center" class="container-outer" role="presentation")
-          //- vertical padding
+        table(class="container-outer")
           tr
-            td(style="padding: 20px 0;")
-
+            td(class="header" align="center") 
+              | Task Status            
           tr
             td(class="container-inner")
               table(cellspacing="0" cellpadding="0" border="0" width="100%")
                 tr
-                  td(class="some-content")
+                  td(class="content")
+                    | Your task was canceled! Bummer.
+          tr
+            td(class="footer")
+              | &copy; 2018
 
       <!--[if mso]></td></tr></table><![endif]-->

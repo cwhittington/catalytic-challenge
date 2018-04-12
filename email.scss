@@ -2,38 +2,18 @@ body {
     font-family: Arial, Helvetica, sans-serif 
 }
 
-.center-content {
-    display: grid;
-    grid-template-columns: 250px auto;
-    grid-template-rows: 25px auto 25px;
-    grid-gap: 5px;
-    grid-auto-rows: minmax(100px, auto);
-    grid-auto-columns: minmax(250px, auto);
-}
-
-.side-nav {
-    grid-column: 1;
-    grid-row: 1;
-    grid-row-start: span 2;
-    width: 250px;
-    background-color: aqua;
+.container-outer {
+    border: 1px;
+    padding: 0px;
+    width: auto;
+    padding: 2px;
+    border-color: #505471;
 }
 
 .header {
-    grid-column: 2;
-    grid-row: 1;
-    background-color: red;
-}
-
-.content {
-    grid-column: 2;
-    grid-row: 2;
-    background-color: green;
-}
-
-.footer {
-    grid-column: 1;
-    grid-row: 3;
-    grid-column-start: span 2;
-    background-color: yellow;
+    background-color: #505471;
+    color: white;
+    vertical-align: middle;
+    height: 50px;
+    align-content: center;
 }
